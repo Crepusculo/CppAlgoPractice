@@ -3,37 +3,23 @@
 //
 
 #include <cstddef>
+#include <iostream>
 
 #ifndef ALGOPRACTICE_LINKLISTSAMPLE_H
 #define ALGOPRACTICE_LINKLISTSAMPLE_H
 
 #endif //ALGOPRACTICE_LINKLISTSAMPLE_H
 
-class Sample {
+struct Sample {
+public:
     int x, y;
 
     Sample() : x(0), y(0) {};
-
+    Sample(int x, int y) : x(x),y(y){};
     friend bool operator==(const Sample &lhs, const Sample &rhs) {
         if (lhs.x == rhs.x) return lhs.y == rhs.y;
         return false;
     };
-};
-
-class LinkListSample {
-private:
-    LinkListSampleNode *start;
-public:
-    bool Insert(LinkListSampleNode *, Sample *);
-
-    bool Insert(size_t, Sample *);
-
-    bool Delete(LinkListSampleNode *);
-
-    bool Find(Sample *);
-
-    inline LinkListSample(int )
-    inline LinkListSample(Sample* ct){}
 };
 
 class LinkListSampleNode {
@@ -42,7 +28,37 @@ private:
 public:
     Node *next;
     Node *prev;
-    Sample *type;
+    Sample *dataset;
 
-    LinkListSampleNode(Sample){}
+    LinkListSampleNode(Sample* pinner):dataset(pinner){  };
 };
+
+class LinkListSample {
+private:
+    size_t size = 0;
+    LinkListSampleNode *start;
+protected:
+    typedef LinkListSampleNode Node;
+public:
+    bool Insert(Node *, Node *);
+
+    bool Insert(size_t, Node *);
+
+    bool Delete(Node *);
+
+    Node* Find(Sample *);
+
+    Node* Find(int, int );
+
+    inline LinkListSample(int x, int y):start(new Node(new Sample(x,y))){};
+    inline LinkListSample(Sample* pct):start(new Node(pct)){};
+    inline LinkListSample(Node* pnode):start(pnode){};
+
+    // accessor
+
+    inline size_t getSize(){
+        return  size;
+    }
+
+};
+
