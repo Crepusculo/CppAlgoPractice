@@ -3,6 +3,14 @@
 //
 
 #include "LinkListSample.h"
+bool LinkListSample::Add(Node * _insert){
+    Node *cnt = this->start;
+    while (cnt->next != NULL){
+        cnt = cnt->next;
+    }
+    cnt->next = _insert;
+    return true;
+}
 
 bool LinkListSample::Insert(Node *_prev, Node *_insert)
 {

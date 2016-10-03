@@ -39,6 +39,8 @@ private:
 protected:
     typedef LinkListSampleNode Node;
 public:
+    bool Add(Node *);
+
     bool Insert(Node *, Node *);
 
     bool Insert(size_t, Node *);
