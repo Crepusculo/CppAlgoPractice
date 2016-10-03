@@ -5,10 +5,12 @@
 #include "LinkListSample.h"
 bool LinkListSample::Add(Node * _insert){
     Node *cnt = this->start;
-    while (cnt->next != NULL){
+    while (cnt->next != nullptr){
         cnt = cnt->next;
     }
     cnt->next = _insert;
+    _insert->prev = cnt;
+    this->size++;
     return true;
 }
 
@@ -64,16 +66,23 @@ bool LinkListSample::Delete(Node *_target)
     while (cnt->next != NULL)
     {
         if (cnt == _target) {
-            Node* prev = cnt->prev;
-            Node* next = cnt->next;
-            if(prev != nullptr) prev->next = cnt->next;
-            if(next != nullptr) next->prev = cnt->prev;
+            if(cnt->prev != nullptr && cnt->next != nullptr){
+                cnt->prev->next = cnt->next;
+                cnt->next->prev = cnt->prev;
+            }
+            else if(cnt->prev != nullptr) { // cnt->next == nullptr
+                cnt->prev->next = nullptr;
+            }
+            else if(cnt->next != nullptr) { // cnt->prev == nullptr
+                start = cnt->next;
+                cnt->next->prev = nullptr;
+            }
             delete(cnt);
+
             size--;
             return true;
         }
         cnt = cnt->next;
-
     }
     std::clog << "LinkListSample::Delete : No Such Target Here" << std::endl;
     return false;
@@ -94,11 +103,10 @@ LinkListSampleNode *LinkListSample::Find(Sample *_target)
 
 LinkListSampleNode *LinkListSample::Find(int x, int y)
 {
-    Sample target(x, y);
     Node *cnt = this->start;
     while (cnt->next != NULL)
     {
-        if (cnt->dataset->x == target.x && cnt->dataset->y == target.y) {
+        if (cnt->dataset->x == x && cnt->dataset->y == y) {
             return cnt;
         }
         cnt = cnt->next;

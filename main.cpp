@@ -1,19 +1,19 @@
 #include <iostream>
 #include "DataStructure/LinkListSample.h"
-#include "test.h"
+#include "test/test_build.h"
+#include "test/test_link_list_sample.h"
+
 #include <ctime>
+
+
 
 using namespace std;
 int main() {
     std::cout << "Hello, World!" << std::endl;
 
-    Test::result ret = Test::getIntArray(200);
+    Test::TLinkListSample();
 
-    for(int i = 0; i< ret.size; i++){
-        cout << i << " ";
-        cout << ret.loc[i] << endl;
-    }
-
-    LinkListSample *linkListSample = new LinkListSample(Test::getInt(),Test::getInt());
     return 0;
 }
+
+

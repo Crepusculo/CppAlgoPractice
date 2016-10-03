@@ -25,8 +25,8 @@ class LinkListSampleNode {
 private:
     typedef LinkListSampleNode Node;
 public:
-    Node *next;
-    Node *prev;
+    Node *next = nullptr;
+    Node *prev = nullptr;
     Sample *dataset;
 
     LinkListSampleNode(Sample* pinner):dataset(pinner){  };
@@ -59,6 +59,10 @@ public:
 
     inline size_t getSize(){
         return  size;
+    }
+
+    inline Node* getStart(){
+        return start;
     }
 
 };
