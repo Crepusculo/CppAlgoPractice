@@ -8,7 +8,6 @@
 #ifndef ALGOPRACTICE_LINKLISTSAMPLE_H
 #define ALGOPRACTICE_LINKLISTSAMPLE_H
 
-#endif //ALGOPRACTICE_LINKLISTSAMPLE_H
 
 struct Sample {
 public:
@@ -61,4 +60,6 @@ public:
     }
 
 };
+
+#endif //ALGOPRACTICE_LINKLISTSAMPLE_H
 

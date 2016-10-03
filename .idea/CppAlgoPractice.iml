@@ -5,22 +5,23 @@
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DataStructure/LinkListSample.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DataStructure/LinkListSample.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library name="Header Search Paths">
         <CLASSES>
-          <root url="file://D:/Libraries/MinGW/lib/gcc/mingw32/5.3.0/include" />
-          <root url="file://D:/Libraries/MinGW/lib/gcc/mingw32/5.3.0/include-fixed" />
-          <root url="file://D:/Libraries/MinGW/mingw32/include" />
-          <root url="file://D:/Libraries/MinGW/include" />
+          <root url="file://E:/Libraries/MinGW/lib/gcc/mingw32/5.3.0/include" />
+          <root url="file://E:/Libraries/MinGW/lib/gcc/mingw32/5.3.0/include-fixed" />
+          <root url="file://E:/Libraries/MinGW/mingw32/include" />
+          <root url="file://E:/Libraries/MinGW/include" />
         </CLASSES>
         <SOURCES>
-          <root url="file://D:/Libraries/MinGW/lib/gcc/mingw32/5.3.0/include" />
-          <root url="file://D:/Libraries/MinGW/lib/gcc/mingw32/5.3.0/include-fixed" />
-          <root url="file://D:/Libraries/MinGW/mingw32/include" />
-          <root url="file://D:/Libraries/MinGW/include" />
+          <root url="file://E:/Libraries/MinGW/lib/gcc/mingw32/5.3.0/include" />
+          <root url="file://E:/Libraries/MinGW/lib/gcc/mingw32/5.3.0/include-fixed" />
+          <root url="file://E:/Libraries/MinGW/mingw32/include" />
+          <root url="file://E:/Libraries/MinGW/include" />
         </SOURCES>
       </library>
     </orderEntry>
