@@ -17,7 +17,7 @@ bool LinkListSample::Add(Node * _insert){
 bool LinkListSample::Insert(Node *_prev, Node *_insert)
 {
     Node *cnt = this->start;
-    while (cnt->next != NULL)
+    while (cnt != NULL)
     {
         if (cnt != _prev){
             cnt = cnt->next;
@@ -27,8 +27,8 @@ bool LinkListSample::Insert(Node *_prev, Node *_insert)
             Node * _next = _prev->next;
             _insert->next = _next;
             _insert->prev = _prev;
-            _next->prev =_insert;
-            _prev->next =_insert;
+            if(_next != nullptr) _next->prev =_insert;
+            if(_prev != nullptr) _prev->next =_insert;
             return true;
         }
     }
@@ -37,6 +37,13 @@ bool LinkListSample::Insert(Node *_prev, Node *_insert)
 
 bool LinkListSample::Insert(size_t _loc, Node *_insert)
 {
+    if(_loc == 0){
+        std::clog << "0" << std::endl;
+        _insert->next = this->start;
+        this->start->prev = _insert;
+        this->start = _insert;
+        return true;
+    }
     if(_loc > this->size){
         std::clog << "LinkListSample::Insert : LinkList Size OverFlow" << std::endl;
         return false;
@@ -48,16 +55,16 @@ bool LinkListSample::Insert(size_t _loc, Node *_insert)
         if (cnt->next != nullptr){
             cnt = cnt->next;
         } else{
-            this->size++;
-            _insert->next = cnt->next;
-            _insert->prev = cnt->prev;
-            cnt->next->prev =_insert;
-            cnt->prev->next =_insert;
-            return true;
+            std::clog<<"null pointer error!"<<std::endl;
         }
         count++;
     }
-    return false;
+    this->size++;
+    _insert->next = cnt->next;
+    _insert->prev = cnt->prev;
+    if(cnt->next != nullptr) cnt->next->prev =_insert;
+    if(cnt->prev != nullptr) cnt->prev->next =_insert;
+    return true;
 }
 
 bool LinkListSample::Delete(Node *_target)
@@ -84,33 +91,33 @@ bool LinkListSample::Delete(Node *_target)
         }
         cnt = cnt->next;
     }
-    std::clog << "LinkListSample::Delete : No Such Target Here" << std::endl;
+    std::clog << "LinkListSample::Delete : No Such Target to Delete Here" << std::endl;
     return false;
 }
 
 LinkListSampleNode *LinkListSample::Find(Sample *_target)
 {
     Node *cnt = this->start;
-    while (cnt->next != NULL)
+    while (cnt->next != nullptr)
     {
         if (*cnt->dataset == *_target) return cnt;
         cnt = cnt->next;
     }
-    std::clog << "LinkListSample::Find : No Such Target Here" << std::endl;
-    return NULL;
+    std::clog << "LinkListSample::Find : No Such Target Sample Here" << std::endl;
+    return nullptr;
 }
 
 
 LinkListSampleNode *LinkListSample::Find(int x, int y)
 {
     Node *cnt = this->start;
-    while (cnt->next != NULL)
+    while (cnt != nullptr)
     {
         if (cnt->dataset->x == x && cnt->dataset->y == y) {
             return cnt;
         }
         cnt = cnt->next;
     }
-    std::clog << "LinkListSample::Find : No Such Target Here" << std::endl;
-    return NULL;
+    std::clog << "LinkListSample::Find : No Such Target X and Y Here" << std::endl;
+    return nullptr;
 }

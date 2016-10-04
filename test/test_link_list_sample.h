@@ -49,7 +49,7 @@ namespace Test {
         // * Test Func : Add
         //
         ss.clear();
-        ss << "Add 50 ""Size of link list:" << linklist->getSize();
+        ss << "Size: " << linklist->getSize();
         PrintMessage(ss.str());
 
         for (int32_t i = 0; i < SIZE; i += 1) {
@@ -57,7 +57,9 @@ namespace Test {
         }
 
         ss.clear();
-        ss << "Size of link list:" << linklist->getSize();
+        ss.str("");
+        ss.flush();
+        ss << "Size: " << linklist->getSize();
         PrintMessage(ss.str());
 
         //
@@ -67,13 +69,26 @@ namespace Test {
 
 
         PrintMessage("Find and Delete by value:");
-        LinkListSampleNode *node1 = linklist->Find(2,2);
+        LinkListSampleNode *node1 = linklist->Find(3,3);
         linklist->Delete(node1);
         TravelNode(linklist->getStart());
 
         PrintMessage("Find and Delete by sample");
         linklist->Delete(linklist->Find(new Sample(255,255)));
         TravelNode(linklist->getStart());
+
+        //
+        // Test Func : Insert
+        //
+        PrintMessage("Insert by index");
+        linklist->Insert(0,new LinkListSampleNode(new Sample(12,12)));
+        TravelNode(linklist->getStart());
+
+        PrintMessage("Insert by index");
+        LinkListSampleNode *node2 = linklist->Find(4,4);
+        linklist->Insert(node2,new LinkListSampleNode(new Sample(13,13)));
+        TravelNode(linklist->getStart());
+
     }
 }
 #endif //ALGOPRACTICE_TEST_LINK_LIST_SAMPLE_H
