@@ -11,7 +11,7 @@
 
 using namespace std;
 namespace Test {
-    void PrintMessage(string str) {
+    void PrintLinkListSampleMessage(string str) {
         cout << "Link List Sample:\t" << str << endl;
     }
 
@@ -42,7 +42,7 @@ namespace Test {
 
         LinkListSampleNode *node = new LinkListSampleNode(new Sample(255,255));
 
-        PrintMessage("Build");
+        PrintLinkListSampleMessage("Build");
         LinkListSample *linklist = new LinkListSample(node);
 
         //
@@ -50,7 +50,7 @@ namespace Test {
         //
         ss.clear();
         ss << "Size: " << linklist->getSize();
-        PrintMessage(ss.str());
+        PrintLinkListSampleMessage(ss.str());
 
         for (int32_t i = 0; i < SIZE; i += 1) {
             linklist->Add(new LinkListSampleNode(&sample[i]));
@@ -60,7 +60,7 @@ namespace Test {
         ss.str("");
         ss.flush();
         ss << "Size: " << linklist->getSize();
-        PrintMessage(ss.str());
+        PrintLinkListSampleMessage(ss.str());
 
         //
         // Test Func : Delete & Find
@@ -68,23 +68,23 @@ namespace Test {
         TravelNode(linklist->getStart());
 
 
-        PrintMessage("Find and Delete by value:");
+        PrintLinkListSampleMessage("Find and Delete by value:");
         LinkListSampleNode *node1 = linklist->Find(3,3);
         linklist->Delete(node1);
         TravelNode(linklist->getStart());
 
-        PrintMessage("Find and Delete by sample");
+        PrintLinkListSampleMessage("Find and Delete by sample");
         linklist->Delete(linklist->Find(new Sample(255,255)));
         TravelNode(linklist->getStart());
 
         //
         // Test Func : Insert
         //
-        PrintMessage("Insert by index");
-        linklist->Insert(0,new LinkListSampleNode(new Sample(12,12)));
+        PrintLinkListSampleMessage("Insert by index");
+        linklist->Insert(1,new LinkListSampleNode(new Sample(12,12)));
         TravelNode(linklist->getStart());
 
-        PrintMessage("Insert by index");
+        PrintLinkListSampleMessage("Insert by index");
         LinkListSampleNode *node2 = linklist->Find(4,4);
         linklist->Insert(node2,new LinkListSampleNode(new Sample(13,13)));
         TravelNode(linklist->getStart());

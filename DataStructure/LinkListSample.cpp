@@ -38,7 +38,6 @@ bool LinkListSample::Insert(Node *_prev, Node *_insert)
 bool LinkListSample::Insert(size_t _loc, Node *_insert)
 {
     if(_loc == 0){
-        std::clog << "0" << std::endl;
         _insert->next = this->start;
         this->start->prev = _insert;
         this->start = _insert;

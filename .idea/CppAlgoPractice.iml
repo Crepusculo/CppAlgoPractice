@@ -5,9 +5,11 @@
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DataStructure/LinkListSample.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DataStructure/LinkListSample.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DataStructure/QueueArraySample.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/test_build.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/test_link_list_sample.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test/test_queue_array_sample.h" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
