@@ -24,7 +24,7 @@ protected:
     bool is_full();
 
 public:
-    QueueArraySample() : len(0), start(array), end(array+1) {
+    QueueArraySample() : len(0), start(array), end(array) {
         for(int i = 0; i<SIZE; i+=1){
             array[i] = NULL;
         }
@@ -61,6 +61,17 @@ bool QueueArraySample<T>::push(T target) {
         std::clog << "Queue is Full, Push Failed" << std::endl;
         return false;
     }
+    //  *
+    //  *  start
+    //  *   end
+    //  *    |
+    //  *    ------------------
+    //  *  (Len == 0)
+    if (this-> start == this-> end && this->len == 0 ){
+        *(this->end) =  target;
+        this->end++;
+        this->len++;
+    }
 
     //  *
     //  *  start      end
@@ -79,7 +90,7 @@ bool QueueArraySample<T>::push(T target) {
     //  *      |       |
     //  *    ------------------
     //  *
-    if(this->end != this->array_end && this->end != this->start){
+    else if(this->end != this->array_end && this->end != this->start){
         *(this->end) =  target;
         this->end++;
         this->len++;
@@ -105,11 +116,12 @@ bool QueueArraySample<T>::push(T target) {
     //  *     -----------------
     //  *    ( len != 0 )
     else if (SIZE <= this->len){
-        std::clog << "Failed to push, array has already fulled." << std::endl;
+        std::clog<<"Failed to push, array has already fulled." << std::endl;
     }
 
     else{
         std::clog<< "Some Status I can't found out." << std::endl;
+        std::cout<< "Some Status I can't found out." << std::endl;
         return false;
     }
     return true;
@@ -211,7 +223,8 @@ size_t QueueArraySample<T>::getLen() {
 template<typename T>
 void QueueArraySample<T>::treval(){
     T* cnt = this->array_start;
-    std::cout<<"Size:" << getSize();
+    std::cout<<"Size:" << getSize() << " ";
+    std::cout<<"Len:" << getLen();
     for (; cnt<this->array_end; cnt += 1){
         if(cnt != this->array_start) std::cout << " <- ";
         std::cout.width(15);
