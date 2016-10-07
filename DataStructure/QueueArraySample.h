@@ -15,6 +15,9 @@ private:
     size_t len;
     T *array = new T[SIZE];
 
+    T *array_start = array;
+    T *array_end   = &array[SIZE];
+
     T *start = nullptr;
     T *end = nullptr;
 protected:
@@ -70,7 +73,7 @@ bool QueueArraySample<T>::push(T target) {
     //  *      |       |
     //  *    ------------------
     //  *
-    if(this->end != &this->array[SIZE] && this->end != this->start){
+    if(this->end != this->array_end && this->end != this->start){
         *(this->end) =  target;
         this->end++;
         this->len++;
@@ -86,7 +89,7 @@ bool QueueArraySample<T>::push(T target) {
         //  *     |                 |
         //  *     ------------------
         //  *
-        if(this->end == &this->array[SIZE]) this->end = this->array;
+        if(this->end == this->array_end) this->end = this->array_start;
     }
 
 
