@@ -22,6 +22,7 @@ private:
     T *end = nullptr;
 protected:
     bool is_full();
+    std::string class_message_head = "QueueArraySample";
 
 public:
     QueueArraySample() : len(0), start(array), end(array) {
@@ -133,25 +134,36 @@ bool QueueArraySample<T>::fpush(T target) {
         std::clog << "Queue is Full, Push Failed" << std::endl;
         return false;
     }
-
     //  *
-    //  *  start      end
-    //  *    |         |
+    //  *  start
+    //  *   end
+    //  *    |
     //  *    ------------------
-    //  *
+    //  *  (Len == 0)
+    if (this-> start == this-> end && this->len == 0 ){
+        *(this->end) =  target;
+        this->end++;
+        this->len++;
+    }
 
-    //  *
-    //  *    start    end
-    //  *      |       |
-    //  *    ------------------
-    //  *
+        //  *
+        //  *  start      end
+        //  *    |         |
+        //  *    ------------------
+        //  *
 
-    //  *
-    //  *     end    start
-    //  *      |       |
-    //  *    ------------------
-    //  *
-    if(this->end != this->array_end && this->end != this->start){
+        //  *
+        //  *    start    end
+        //  *      |       |
+        //  *    ------------------
+        //  *
+
+        //  *
+        //  *     end    start
+        //  *      |       |
+        //  *    ------------------
+        //  *
+    else if(this->end != this->array_end && this->end != this->start){
         *(this->end) =  target;
         this->end++;
         this->len++;
@@ -177,37 +189,76 @@ bool QueueArraySample<T>::fpush(T target) {
         //  *     -----------------
         //  *    ( len != 0 )
     else if (SIZE <= this->len){
-        std::clog << "Failed to push, array has already fulled." << std::endl;
+        pop();
+        push(target);
     }
 
     else{
-        std::clog<< "Some Status I can't found out." << std::endl;
+        std::clog<<class_message_head<<"::\t"<< "Some Status I can't found out." << std::endl;
+        std::cout<<class_message_head<<"::\t"<< "Some Status I can't found out." << std::endl;
         return false;
     }
     return true;
+
 }
 
 template<typename T>
 T QueueArraySample<T>::pop() {
+
     //  *
-    //  *    start    end
-    //  *      |       |
+    //  *  start
+    //  *   end
+    //  *    |
     //  *    ------------------
-    //  *
+    //  *  (Len == 0)
+    if (this->getLen() == 0 ){
+        std::clog<<class_message_head<<"::\t"<<"Empty queue, pop failed" << std::endl;
+        return NULL;
+    }
 
-    //  *
-    //  *    end
-    //  *    start
-    //  *     |
-    //  *     -----------------
-    //  *    ( len == 0 )
+        //  *
+        //  *  start      end
+        //  *    |         |
+        //  *    ------------------
+        //  *
 
-    //  *
-    //  *
-    //  *    end     start
-    //  *     |        |
-    //  *     -----------------
-    //  *    ( len != 0 )
+        //  *
+        //  *     end    start
+        //  *      |       |
+        //  *    ------------------
+        //  *
+
+        //  *
+        //  *           end
+        //  *           start
+        //  *            |
+        //  *     -----------------
+        //  *    ( len != 0 )
+        if(this->start != this->array_end -1){
+            T ret = *(this->start);
+            *(this->start) = NULL;
+            this->start +=1;
+            this->len--;
+            return ret;
+        }
+        //  *
+        //  *         end        start
+        //  *          |           |
+        //  *     ------------------
+        //  *
+        else if (this->start == this->array_end -1){
+            T ret = *(this->start);
+            *(this->start) =NULL;
+            this->start = this->array_start;
+            this->len--;
+        }
+        else{
+            std::clog<< "Some Status I can't found out." << std::endl;
+            std::cout<< "Some Status I can't found out." << std::endl;
+            return false;
+        }
+    return true;
+
 }
 
 template<typename T>
@@ -223,12 +274,12 @@ size_t QueueArraySample<T>::getLen() {
 template<typename T>
 void QueueArraySample<T>::treval(){
     T* cnt = this->array_start;
-    std::cout<<"Size:" << getSize() << " ";
-    std::cout<<"Len:" << getLen();
+    std::cout<<class_message_head<<"::\t"<< "Size:" << getSize() << " ";
+    std::cout<<"Len:" << getLen() << "\t";
     for (; cnt<this->array_end; cnt += 1){
         if(cnt != this->array_start) std::cout << " <- ";
-        std::cout.width(15);
-        if(start == nullptr) std::cout << "null";
+        std::cout.width(5);
+        if(start == NULL) std::cout << "null";
         else std::cout << *cnt;
     }
     std::cout<<std::endl;
