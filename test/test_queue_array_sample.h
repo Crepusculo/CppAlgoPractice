@@ -15,7 +15,7 @@ namespace Test {
 
     void TQueueArraySample(){
         QueueArraySample<int> *queue = new QueueArraySample<int>();
-        for (int i = 0; i<queue->getSize()+3 ; i+=1) {
+        for (int i = 0; i<queue->getSize()-1 ; i+=1) {
             queue->push(i+100);
             queue->treval();
         }
