@@ -5,7 +5,7 @@
 #ifndef ALGOPRACTICE_TEST_QUEUE_ARRAY_SAMPLE_H
 #define ALGOPRACTICE_TEST_QUEUE_ARRAY_SAMPLE_H
 #include "test_build.h"
-#include "../DataStructure/QueueArraySample.h"
+#include "../data_structure/QueueArraySample.h"
 
 using namespace std;
 namespace Test {

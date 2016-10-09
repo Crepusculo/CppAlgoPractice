@@ -5,7 +5,7 @@
 #ifndef ALGOPRACTICE_TEST_LINK_LIST_SAMPLE_H
 #define ALGOPRACTICE_TEST_LINK_LIST_SAMPLE_H
 
-#include "../DataStructure/LinkListSample.h"
+#include "../data_structure/LinkListSample.h"
 #include "test_build.h"
 #include <sstream>
 
