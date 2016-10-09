@@ -1,8 +1,8 @@
 #include <iostream>
-#include "data_structure/LinkListSample.h"
 #include "test/test_build.h"
 #include "test/test_link_list_sample.h"
 #include "test/test_queue_array_sample.h"
+#include "test/test_cft_class_inherits.h"
 #include <ctime>
 #include <cstdio>
 
@@ -21,9 +21,11 @@ int main() {
 
 void menu() {
     while(get_a_char()) {
-        Test::TLinkListSample();
-        Test::TQueueArraySample();
+//        Test::TLinkListSample();
+//        Test::TQueueArraySample();
+        Test::TClassInherits();
     }
+
 }
 
 char get_a_char() {
